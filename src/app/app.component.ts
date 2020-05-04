@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'madlibs';
+  lunch:string = "noodles"
+  noun:string = ""
+  verb:string = ""
+  who:string = ""
+  why:string = ""
+  where:string = ""
 }

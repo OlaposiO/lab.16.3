@@ -1,0 +1,42 @@
+<body>
+
+<p>A place to put Todos</p>
+
+<div>
+    <input [(ngModel)]="filterText" type="text" name="filterText" placeholder="Filter your To-dos" class="todocss"> 
+    <button (click)="filterList()" >Filter</button>   
+</div>
+ 
+<ol class="item-container">
+    <li *ngFor="let todo of list; index as i">
+
+        <div class="container">
+            <button *ngIf="!todo.completed" (click)="completeTask(todo)" 
+            class ="complete-button">Complete</button>
+            <p [ngClass]="{complete: todo.completed}" class="todoText">{{todo.task}}</p>
+            <button (click)="removeTask(todo)" class="removeB">X</button>
+            <div *ngIf="show ===todo.completed "><p>Completed</p></div>
+           <!-- 
+            This was for the editing however it does not work properly.
+
+            <div *ngIf="!todo.editing; else editingTask" class="taskLabel" (dblclick)="editList(todo.task)">{{todo.task}}</div>
+            <ng-template #editingTask>
+                <input type="text" class ="taskEdit" [(ngModel)]="todo.task">
+                
+            </ng-template>
+
+        -->
+           <!-- <p [hidden] *ngIf="list.every(todo.completed)===true">All task are Completed!</p> -->
+        </div>
+    </li>
+</ol>
+
+
+
+
+<div>
+    <input [(ngModel)]="newList" type ="text" placeholder="Add your todo" class="newtodocss">
+    <button type="submit" (click)="addTask(newList)" class="newToList">Add to List</button>
+</div>
+
+</body>
